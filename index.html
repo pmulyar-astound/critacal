@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    data-image-optimizing-origin="<%= process.env.IMAGE_OPTIMIZING_ORIGIN %>"
+    data-media-backend="<%= global.MAGENTO_MEDIA_BACKEND_URL %>"
+>
+    <head>
+        <script>
+            var isABTastyEnabled = <%= process.env.ABTASTY_ENABLED %>;
+            var ABTastyFileName = '<%= process.env.ABTASTY_FILE_NAME %>';
+            if (isABTastyEnabled && ABTastyFileName) {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://try.abtasty.com/' + ABTastyFileName;
+
+                var head = document.head;
+                var firstChild = head.firstChild;
+                head.insertBefore(script, firstChild);
+            }
+        </script>
+        <!-- Metadata -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#0F213A" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta
+            name="msapplication-TileImage"
+            content="/assets/icons/ms-icon-144x144.png"
+        />
+        <meta
+            name="msapplication-config"
+            content="/assets/icons/browserconfig.xml"
+        />
+        <meta
+            name="p:domain_verify"
+            content="<%= process.env.MAGENTO_SECURITY_SCAN_CODE %>"
+        />
+        <link rel="manifest" href="/assets/manifest.json" />
+        <link rel="manifest" href="/asset-manifest.json" />
+
+        <!-- Apple Tags -->
+        <link
+            rel="apple-touch-icon"
+            sizes="57x57"
+            href="/assets/icons/apple-icon-57x57.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="60x60"
+            href="/assets/icons/apple-icon-60x60.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="72x72"
+            href="/assets/icons/apple-icon-72x72.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="/assets/icons/apple-icon-76x76.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="114x114"
+            href="/assets/icons/apple-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="/assets/icons/apple-icon-120x120.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="144x144"
+            href="/assets/icons/apple-icon-144x144.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="/assets/icons/apple-icon-152x152.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/assets/icons/apple-icon-180x180.png"
+        />
+
+        <!-- Icons -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="192x192"
+            href="/assets/icons/android-icon-192x192.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/assets/icons/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/assets/icons/favicon-96x96.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/assets/icons/favicon-16x16.png"
+        />
+        <link rel="shortcut icon" href="/assets/favicon.ico" />
+
+        <script>
+            window.STORE_CODE = '<%= process.env.ACTIVE_STORE %>';
+            window.__APOLLO_STATE__ = <%= JSON.stringify(htmlWebpackPlugin.options.clientCache) %>;
+        </script>
+        <script>
+            var googleoptimize_enable =
+                '<%= process.env.GOOGLEOPTIMIZER_ENABLE %>';
+            if (googleoptimize_enable == '1') {
+                var src =
+                    'https://www.googleoptimize.com/optimize.js?id=<%= process.env.GOOGLEOPTIMIZER_CONTAINER %>';
+                var s = document.createElement('script');
+                s.defer = true;
+                s.setAttribute('src', src);
+                document.head.appendChild(s);
+            }
+        </script>
+        <script>
+            var isDuelEnabled = <%= process.env.DUEL_ENABLED %>;
+            if (!!isDuelEnabled) {
+                var src = 'https://vision.duel.me/duel-analytics.js';
+                var s = document.createElement('script');
+                s.defer = true;
+                s.setAttribute('src', src);
+                document.head.appendChild(s);
+            }
+        </script>
+
+        <script>
+            var public_id = '<%= process.env.OG_PUBLIC_ID %>';
+            if (public_id) {
+                var src =
+                    'https://static.ordergroove.com/' + public_id + '/main.js';
+                var s = document.createElement('script');
+                s.setAttribute('src', src);
+                document.head.appendChild(s);
+            }
+        </script>
+
+        <link rel="preconnect" href="<%= process.env.MAGENTO_BACKEND_URL %>" />
+        <link rel="preconnect" href="https://cdn-scripts.signifyd.com" />
+        <link rel="preconnect" href="https://imgs.signifyd.com" />
+        <link rel="preconnect" href="https://h.online-metrix.net" />
+        <link rel="preconnect" href="https://apps.bazaarvoice.com/" />
+        <link rel="preload" href="/assets/critical.css" type="text/css" as="style"/>
+
+        <!--Pre load fonts for better perfomance and user experience-->
+        <link
+            rel="preload"
+            as="font"
+            href="/fonts/visuelt-medium.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            href="/fonts/visuelt-regular.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            href="/fonts/visuelt-light.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="preload"
+            as="font"
+            href="/fonts/visuelt-bold.woff2"
+            type="font/woff2"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <link rel="stylesheet" href="/assets/critical.css" type="text/css">
+        <div id="root"></div>
+        <!-- Fallback for when JavaScript is disabled. -->
+        <noscript>
+            <style>
+                .fallback-nojs {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                }
+                .fallback-nojs a {
+                    color: currentColor;
+                }
+            </style>
+            <div class="fallback-nojs">
+                <h1>Oops! JavaScript is disabled</h1>
+                <div>
+                    To browse the ELEMIS store,<br />
+                    <a href="https://www.enable-javascript.com">
+                        enable JavaScript in your browser.
+                    </a>
+                </div>
+            </div>
+        </noscript>
+    </body>
+</html>
