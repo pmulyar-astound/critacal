@@ -23183,12 +23183,7 @@ input#shipping_address::placeholder {
     }
 }
 
-@media (768px) {
-    .search-icon svg {
-        height: 16px;
-        width: 16px
-    }
-}
+
 
 @media (min-width: 1024px) {
     .product-search {
@@ -23202,8 +23197,3 @@ input#shipping_address::placeholder {
     }
 }
 
-@media (1440px) {
-    .product-search {
-        padding: 0 15px 0 42px
-    }
-}
